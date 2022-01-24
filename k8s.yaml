@@ -41,6 +41,24 @@ spec:
       containers:
       - name: fusionauth
         image: docker.io/fusionauth/fusionauth-app:1.32.1
+        env:
+          - name: DATABASE_USERNAME
+            value: fusionauth
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: fusionauth-1.32.1-credentials
+                key: password
+          - name: DATABASE_URL
+            value: "jdbc:postgresql://db:5432/fusionauth"
+          - name: SEARCH_TYPE
+            value: elasticsearch
+          - name: SEARCH_SERVERS
+            value: "http://search:9200"
+          - name: FUSIONAUTH_APP_MEMORY
+            value: 256M
+          - name: FUSIONAUTH_APP_RUNTIME_MODE
+            value: production
         ports:
         - containerPort: 9011
           protocol: TCP
