@@ -1,0 +1,20 @@
+{
+  "name": "fusionauth-node",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@fusionauth/typescript-client": "^1.22.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^14.2.0",
+    "express": "~4.16.1",
+    "express-session": "1.17.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pkce-challenge": "^2.1.0",
+    "pug": "3.0.1"
+  }
+}
