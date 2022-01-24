@@ -37,3 +37,7 @@ For a quick local setup.
 1. Create a fusionauth application.
 1. Edit the user and add a `registration` for the app just created.
 2. Update `.env` with values from the fusionauth application.
+
+## TODO
+
+- [Set up minimal security for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html)
