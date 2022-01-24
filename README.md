@@ -32,4 +32,8 @@ For a quick local setup.
 
 ## Production
 
-TODO
+1. Deploy FusionAuth `kubectl apply -f k8s.yaml` in Kubernetes cluster.
+1. Setup admin user.
+1. Create a fusionauth application.
+1. Edit the user and add a `registration` for the app just created.
+2. Update `.env` with values from the fusionauth application.
