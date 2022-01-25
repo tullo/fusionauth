@@ -34,7 +34,14 @@ For a quick local setup.
 
 Deploy service dependencies.
 
+### Database
+
+
+Deploy `bitnami/postgresql` helm chart with [cloud.okteto.com](https://cloud.okteto.com) catalog deployment using [db-values.yaml](db-values.yaml) template values.
+
 ### Elasticsearch
+
+Deploy `elastic/elasticsearch` helm chart using [es-values.yaml](es-values.yaml) template values.
 
 ```sh
 helm install elasticsearch elastic/elasticsearch \
@@ -42,8 +49,8 @@ helm install elasticsearch elastic/elasticsearch \
 --values es-values.yaml
 
 kubectl get pods --namespace=... -l app=elasticsearch-master -w
-NAME                     READY   STATUS    RESTARTS   AGE
-elasticsearch-master-0   1/1     Running   0          20m
+# NAME                     READY   STATUS    RESTARTS   AGE
+# elasticsearch-master-0   1/1     Running   0          20m
 ```
 
 

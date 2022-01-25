@@ -1,0 +1,7 @@
+---
+postgresqlUsername: postgres
+postgresqlPassword: postgres
+postgresqlDatabase: fusionauth
+fullnameOverride: db
+persistence:
+  size: 1Gi
