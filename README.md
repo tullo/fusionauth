@@ -26,7 +26,7 @@ For a quick local setup.
 ### Authenticate
 
 1. `npm i && npm start`
-1. Open [127.0.0.1.nip.io:3000/](http://127.0.0.1.nip.io:3000/)
+1. Open [127.0.0.1.nip.io:3000/](https://127.0.0.1.nip.io:3000/)
 
 ---
 
@@ -74,7 +74,7 @@ kubectl get pods --namespace=... -l app=elasticsearch-master -w
 ### Authenticate
 
 1. `npm start`
-1. Open [127.0.0.1.nip.io:3000/](http://127.0.0.1.nip.io:3000/)
+1. Open [127.0.0.1.nip.io:3000/](https://127.0.0.1.nip.io:3000/)
 
 ---
 

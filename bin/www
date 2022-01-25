@@ -2,12 +2,17 @@
 
 var app = require("../src/app");
 var debug = require("debug")("fusionauth-node:server");
-var http = require("http");
+var https = require('https');
+var fs = require('fs');
 
 var port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-var server = http.createServer(app);
+//var server = http.createServer(app);
+var server = https.createServer({
+  key: fs.readFileSync('./tls/localhost/key.pem'),
+  cert: fs.readFileSync('./tls/localhost/cert.pem'),
+}, app);
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
