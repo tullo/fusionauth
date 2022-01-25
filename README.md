@@ -26,7 +26,7 @@ For a quick local setup.
 ### Authenticate
 
 1. `npm i && npm start`
-1. Open [localhost:3000/](http://localhost:3000/)
+1. Open [127.0.0.1.nip.io:3000/](http://127.0.0.1.nip.io:3000/)
 
 ---
 
@@ -53,6 +53,7 @@ kubectl get pods --namespace=... -l app=elasticsearch-master -w
 # elasticsearch-master-0   1/1     Running   0          20m
 ```
 
+### FusionAuth
 
 1. Deploy FusionAuth `kubectl apply -f k8s.yaml` in Kubernetes cluster.
 1. Setup admin user.

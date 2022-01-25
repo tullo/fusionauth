@@ -50,7 +50,7 @@ router.get('/oauth-redirect', function (req, res, next) {
     req.query.code,
     clientId,
     clientSecret,
-    'http://localhost:3000/oauth-redirect',
+    'http://127.0.0.1.nip.io:3000/oauth-redirect',
     req.session.verifier)
       .then((response) => {
         console.log(response.response.access_token);
