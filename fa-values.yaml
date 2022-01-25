@@ -1,0 +1,122 @@
+---
+# helm template fusionauth-1.32.1 fusionauth/fusionauth --version '0.10.5' --values fa-values.yaml > fa.yaml
+# helm install fusionauth-1.32.1 fusionauth/fusionauth --dry-run --version '0.10.5' --values fa-values.yaml
+nameOverride: "fusionauth"
+fullnameOverride: "fusionauth"
+image:
+  repository: fusionauth/fusionauth-app
+  tag: 1.32.1
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8080
+  annotations:
+    "dev.okteto.com/auto-ingress": "true"
+
+database:
+  protocol: postgresql
+  host: db
+  port: 5432
+  tls: false
+  tlsMode: require
+  name: fusionauth
+
+# To use an existing secret, set `existingSecret` to the name of the secret. We expect at most two keys: `password` is required. `rootpassword` is only required if `database.root.user` is set.
+# database.existingSecret -- The name of an existing secret that contains the database passwords
+  existingSecret: "fusionauth-1.32.1-credentials"
+  user: "fusionauth"
+# Database password for fusionauth to use in normal operation - not required if database.existingSecret is configured
+# password: "..."
+  root:
+    user: "postgres"
+
+search:
+# Defines backend for fusionauth search capabilities. Valid values for engine are 'elasticsearch' or 'database'.
+  engine: elasticsearch
+  protocol: http
+  host: elasticsearch-master
+  port: 9200
+#   # search.user -- Username to use with basic auth when connecting to elasticsearch. Ignored when search.engine is NOT elasticsearch
+#   # user: ""
+#   # search.password -- Password to use with basic auth when connecting to elasticsearch. Ignored when search.engine is NOT elasticsearch
+#   # password: ""
+app:
+  memory: 512M
+# Configures runtime mode for fusionauth. Should be 'development' or 'production'
+#  runtimeMode: development
+  runtimeMode: production
+
+# kickstart:
+#   enabled: false
+#   data:
+#     {}
+#     # kickstart.json: |
+#     #    {
+#     #      "variables": {
+#     #        "defaultTenantId": "d7d09513-a3f5-401c-9685-34ab6c552453",
+#     #        "adminEmail": "admin@fusionauth.io",
+#     #        "adminPassword": "password"
+#     #      },
+#     #      "apiKeys": [
+#     #        {
+#     #          "key": "bf69486b-4733-4470-a592-f1bfce7af580",
+#     #          "description": "Core API Key"
+#     #        }
+#     #      ],
+#     #      "requests": [
+#     #        {
+#     #          "method": "POST",
+#     #          "url": "/api/user/registration",
+#     #          "body": {
+#     #            "user": {
+#     #              "email": "#{adminEmail}",
+#     #              "password": "#{adminPassword}"
+#     #            },
+#     #            "registration": {
+#     #              "applicationId": "#{FUSIONAUTH_APPLICATION_ID}",
+#     #              "roles": [
+#     #                "admin"
+#     #              ]
+#     #            }
+#     #          }
+#     #        }
+#     #      ]
+#     #    }
+
+# ingress:
+
+#   # ingress.enabled -- Enables ingress creation for fusionauth.
+#   enabled: false
+
+# # resources -- Define resource requests and limits for fusionauth-app.
+# resources:
+#   {}
+#   # We usually recommend not to specify default resources and to leave this as a conscious
+#   # choice for the user. This also increases chances charts run on environments with little
+#   # resources, such as Minikube. If you do want to specify resources, uncomment the following
+#   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+#   # limits:
+#   #  cpu: 100m
+#   #  memory: 128Mi
+#   # requests:
+#   #  cpu: 100m
+# #  memory: 128Mi
+
+autoscaling:
+  enabled: false
+# replicaCount: 1
+
+# # extraVolumes -- Define extra Volumes. Allow to add existing claimName
+# extraVolumes:
+#   []
+#   # - name: custom-css-data
+#   #   persistentVolumeClaim:
+#   #     claimName: custom-css-data
+
+# # extraVolumes -- Associate mountPath for each  extraVolumes
+# extraVolumeMounts:
+#   []
+#   # - name: custom-css-data
+#   #   mountPath: /usr/local/fusionauth/fusionauth-app/web/custom
+
+# inspiration from: https://github.com/FusionAuth/charts/blob/master/chart/examples/minikube/values.yaml
