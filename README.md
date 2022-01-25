@@ -61,6 +61,17 @@ kubectl get pods --namespace=... -l app=elasticsearch-master -w
 1. Edit the user and add a `registration` for the app just created.
 2. Update `.env` with values from the fusionauth application.
 
+### Authenticate
+
+1. `npm start`
+1. Open [127.0.0.1.nip.io:3000/](http://127.0.0.1.nip.io:3000/)
+
+---
+
+## Helm Charts
+
+- [Elasticsearch Helm Chart](https://github.com/elastic/helm-charts/tree/v7.16.3/elasticsearch) v7.16.3
+
 ## TODO
 
 - [Set up minimal security for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html)
