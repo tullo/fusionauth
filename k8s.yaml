@@ -54,7 +54,7 @@ spec:
           - name: SEARCH_TYPE
             value: elasticsearch
           - name: SEARCH_SERVERS
-            value: "http://search:9200"
+            value: "http://elasticsearch-master:9200"
           - name: FUSIONAUTH_APP_MEMORY
             value: 256M
           - name: FUSIONAUTH_APP_RUNTIME_MODE

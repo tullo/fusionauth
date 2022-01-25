@@ -30,7 +30,22 @@ For a quick local setup.
 
 ---
 
-## Production
+## Production / Kubernetes Cluster
+
+Deploy service dependencies.
+
+### Elasticsearch
+
+```sh
+helm install elasticsearch elastic/elasticsearch \
+--version 7.16.3 \
+--values es-values.yaml
+
+kubectl get pods --namespace=... -l app=elasticsearch-master -w
+NAME                     READY   STATUS    RESTARTS   AGE
+elasticsearch-master-0   1/1     Running   0          20m
+```
+
 
 1. Deploy FusionAuth `kubectl apply -f k8s.yaml` in Kubernetes cluster.
 1. Setup admin user.
