@@ -6,7 +6,11 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["fusionauth/fusionauth-app", "postgres"],
+      "matchPackageNames": [
+        "fusionauth/fusionauth-app",
+        "postgres",
+        "docker.elastic.co/elasticsearch/elasticsearch"
+      ],
       "automerge": true
     }
   ],
