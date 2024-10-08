@@ -11,7 +11,7 @@
     "debug": "~4.3.0",
     "dotenv": "^16.0.0",
     "express": "~4.21.0",
-    "express-session": "1.18.0",
+    "express-session": "1.18.1",
     "http-errors": "~2.0.0",
     "morgan": "~1.10.0",
     "pkce-challenge": "^4.0.0",
