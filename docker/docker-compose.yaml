@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:18.0-alpine
+    image: postgres:18.1-alpine
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_USER: ${POSTGRES_USER}
