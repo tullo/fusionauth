@@ -4,7 +4,7 @@ metadata:
   name: fusionauth
   labels:
     app.kubernetes.io/name: fusionauth
-    app.kubernetes.io/instance: fusionauth-1.32.1
+    app.kubernetes.io/instance: fusionauth-1.61.2
 spec:
   type: LoadBalancer
   ports:
@@ -13,14 +13,14 @@ spec:
       targetPort: 9011
   selector:
     app.kubernetes.io/name: fusionauth
-    app.kubernetes.io/instance: fusionauth-1.32.1
+    app.kubernetes.io/instance: fusionauth-1.61.2
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
     app.kubernetes.io/name: fusionauth
-    app.kubernetes.io/instance: fusionauth-1.32.1
+    app.kubernetes.io/instance: fusionauth-1.61.2
   name: fusionauth
 spec:
   podManagementPolicy: OrderedReady
@@ -29,25 +29,25 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: fusionauth
-      app.kubernetes.io/instance: fusionauth-1.32.1
+      app.kubernetes.io/instance: fusionauth-1.61.2
   serviceName: fusionauth
   template:
     metadata:
       labels:
         app.kubernetes.io/name: fusionauth
-        app.kubernetes.io/instance: fusionauth-1.32.1
+        app.kubernetes.io/instance: fusionauth-1.61.2
       name: fusionauth
     spec:
       containers:
       - name: fusionauth
-        image: docker.io/fusionauth/fusionauth-app:1.32.1
+        image: docker.io/fusionauth/fusionauth-app:1.61.2
         env:
           - name: DATABASE_USERNAME
             value: fusionauth
           - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: fusionauth-1.32.1-credentials
+                name: fusionauth-1.61.2-credentials
                 key: password
           - name: DATABASE_URL
             value: "jdbc:postgresql://db:5432/fusionauth"
@@ -80,7 +80,7 @@ spec:
         - sh
         - -c
         - echo initializing volume... && (cp -Rv /usr/local/fusionauth/config /volumes/fa-data || true)
-        image: docker.io/fusionauth/fusionauth-app:1.32.1
+        image: docker.io/fusionauth/fusionauth-app:1.61.2
         imagePullPolicy: IfNotPresent
         name: init-volume-data
         volumeMounts:
